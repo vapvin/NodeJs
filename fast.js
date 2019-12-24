@@ -8,6 +8,28 @@ const crr = [
     ...brr
 ]
 
+
+
 console.log(arr)
 console.log(brr)
 console.log(crr)
+
+
+const abj = {
+    name: "block",
+    age: 31
+}
+
+const bbj = {
+    nick: "inline",
+    num: 7
+}
+
+const cbj = {
+    ...abj,
+    ...bbj
+}
+
+console.log(abj)
+console.log(bbj)
+console.log(cbj)
