@@ -1,7 +1,13 @@
 'use strict'
 
-const arr = []
+const arr = [1,2,3]
+const brr = [4,5,6]
 
-for(const i = 0; i < 100; i++) {
-    arr.push(i)
-}
+const crr = [
+    ...arr,
+    ...brr
+]
+
+console.log(arr)
+console.log(brr)
+console.log(crr)
