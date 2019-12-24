@@ -1,9 +1,20 @@
 'use strict'
 
-const arr = [ 1, 2, 0, -1, -2]
+let string = 'node.js 올인원 패키지'
 
-const res = arr.some(key => key < 0 )
-const res2 = arr.every(key => key > 0)
+let isStartWith = string.startsWith('n')
+
+let isIncludes = string.includes(',')
+
+let isisEndsWith = string.endsWith('지')
+
+
+const checkIfContains = () => {
+    if((isIncludes || isStartWith) && isisEndsWith ) {
+        return true;
+    }
+}
+
+const res = checkIfContains()
 
 console.log(res)
-console.log(res2)
