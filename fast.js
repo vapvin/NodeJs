@@ -1,12 +1,17 @@
 'use strict'
 
-const details = `자세한 내용`
+const test = new Set();
 
-let str = `node.js`
+test.add(1)
+test.add(1)
+test.add(2)
+test.add(2)
+test.add(3)
 
-str += `올인원 패키지 ${details}`
+for(const item of test) {
+    console.log(item)
+}
 
-const int = 1
-str += `${str}의 값은${int} 입니다.`
+const ret = test.has(0)
 
-console.log`입력`
+console.log(ret)
