@@ -1,9 +1,12 @@
 'use strict'
 
-class Test {
-    static call() {
-        console.log("Static Method")
-    }
-}
+const details = `자세한 내용`
 
-Test.call()
+let str = `node.js`
+
+str += `올인원 패키지 ${details}`
+
+const int = 1
+str += `${str}의 값은${int} 입니다.`
+
+console.log(str)
