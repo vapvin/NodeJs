@@ -33,3 +33,17 @@ const cbj = {
 console.log(abj)
 console.log(bbj)
 console.log(cbj)
+
+// Hoisting
+
+console.log(a)
+var a = 1;
+
+//console.log(b)
+//let b = 3;
+
+fc()
+
+function fc() {
+    console.log("Hello World")
+}
