@@ -9,9 +9,7 @@ function asyncFunc(num, sec) {
         setTimeout(()=>{
             console.log(num);
             resolve('success')
-        }, sec);
-
-       
+        }, sec);   
     });
 }
 
