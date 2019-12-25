@@ -10,9 +10,16 @@ class cacheManager {
             obj
         })
     }
+
+    getConfig () {
+        return this.config
+    }
 }
 
 const CacheManager = new cacheManager()
 CacheManager.addConfig({
     port: 8000
 })
+
+const config = CacheManager.getConfig()
+console.log(config)
