@@ -1,12 +1,22 @@
 'use strict'
 
-const obj = {
-    title: 'node.js',
-    value: '올인원 패키지'
-}
+const dns = require('dns')
 
-const arr = [ 0, 1, 2]
+dns.lookup('archive.org', (err, adress, family) => {
+    console.log(`address: ${adress}, ${family}`)
+})
 
-const [ , a, b] = arr
+dns.resolve4('archive.org', (err, addresses) => {
+    if(err) throw err
 
-const { title, value } = obj
+    const res = JSON.stringify(addresses)
+    console.log(res)
+
+    addresses.forEach(a => {
+        dns.reverse(a, (err, hostnames) => {
+            if(err) throw err
+
+            console.log(`reverse for ${a}; ${JSON.stringify(hostnames)}`)
+        })
+    })
+})
