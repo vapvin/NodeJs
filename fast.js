@@ -1,9 +1,9 @@
 'use strict'
 
-// Curried Function
+class cacheManager {
+    constructor() {
+        this.config = []
+    }
+}
 
-const getDiscount = rate => price => rate * price
-
-const getTen = getDiscount(0.1)
-
-getTen(price)
+const CacheManager = new cacheManager()
