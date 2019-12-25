@@ -6,7 +6,9 @@ class cacheManager {
     }
 
     addConfig () {
-        
+        this.config.push({
+            
+        })
     }
 }
 
