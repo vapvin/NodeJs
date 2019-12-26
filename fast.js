@@ -24,3 +24,5 @@ class FullStack {
         this.frontend = frontend
     }
 }
+
+const fullstack = new FullStack('javascript', 'javascript')
