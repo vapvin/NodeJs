@@ -14,7 +14,6 @@ const writeAndRead = async (data = '') => {
     try {
         await write('test.txt', data)
         return (await read('test.txt'))
-        
     } catch (e) {
         console.error(e)
     }
