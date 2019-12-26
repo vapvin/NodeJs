@@ -1,17 +1,17 @@
 'use strict'
 
-const timeout = setTimeout(()=>{
-    console.log('first')
-}, 0)
+function fullstack (backend, frontend) {
+    this.backend = backend
+    this.frontend = frontend
 
-const immediate = setImmediate(()=>{
-    console.log('second')
-})
+    fullstack.prototype.getBackend = () => this.backend
+    fullstack.prototype.setBackend = () => this.backend = backend
 
-const interval = setInterval(()=>{
-    console.log('third')
-}, 1000)
+    fullstack.prototype.getFrontend = () => this.frontend
+    fullstack.prototype.setFrontend = () => this.frontend = frontend
+}
 
-clearTimeout(timeout)
-clearImmediate(immediate)
-clearInterval(interval)
+const Fullstack = new fullstack('javascript', 'javascript')
+
+Fullstack.getBackend()
+Fullstack.getFrontend()
