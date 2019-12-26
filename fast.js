@@ -2,21 +2,41 @@
 
 const dns = require('dns')
 
-dns.lookup('archive.org', (err, adress, family) => {
-    console.log(`address: ${adress}, ${family}`)
+const fs = require('fs')
+const { promisify } = require('util')
+
+
+const read = promisify(fs.readFile)
+const write = promisify(fs.writeFile)
+
+const writeAndRead = async (data = '') => {
+
+    try {
+        await write('test.txt', data)
+        const content = await read('test.txt')
+        return content
+    } catch (e) {
+        console.error(e)
+    }
+} 
+
+fs.readFile('test.txt', 'utf-8', (err, data) => {
+    if (err) {
+        console.error(err)
+        return
+    }
+
+    console.log(data)
+    
 })
 
-dns.resolve4('archive.org', (err, addresses) => {
-    if(err) throw err
+const content = 'Something to write'
 
-    const res = JSON.stringify(addresses)
-    console.log(res)
+fs.writeFile('fast.txt', content, err => {
+    if(err) {
+        console.error(err)
+        return
+    }
 
-    addresses.forEach(a => {
-        dns.reverse(a, (err, hostnames) => {
-            if(err) throw err
-
-            console.log(`reverse for ${a}; ${JSON.stringify(hostnames)}`)
-        })
-    })
+    console.log('Success')
 })
