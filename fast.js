@@ -1,17 +1,26 @@
 'use strict'
 
-function fullstack (backend, frontend) {
-    this.backend = backend
-    this.frontend = frontend
+class FullStack {
+    constructor(backend, frontend) {
+        this.backend = backend
+        this.frontend = frontend
+    }
 
-    fullstack.prototype.getBackend = () => this.backend
-    fullstack.prototype.setBackend = () => this.backend = backend
+    getBackend () {
+        return this.backend
+    }
 
-    fullstack.prototype.getFrontend = () => this.frontend
-    fullstack.prototype.setFrontend = () => this.frontend = frontend
+
+
+    getFrontend () {
+        return this.frontend
+    }
+
+    setBackend (backend) {
+        this.backend = backend
+    }
+
+    setFrontend (frontend) {
+        this.frontend = frontend
+    }
 }
-
-const Fullstack = new fullstack('javascript', 'javascript')
-
-Fullstack.getBackend()
-Fullstack.getFrontend()
