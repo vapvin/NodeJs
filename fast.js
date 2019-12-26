@@ -1,22 +1,14 @@
 'use strict'
 
-const dns = require('dns')
+function* log () {
+    console.log(0, yield)
+    console.log(1, yield)
+    console.log(2, yield)
+}
 
-const fs = require('fs')
-const { promisify } = require('util')
+const gen = log()
+gen.next()
+gen.next('zero')
+gen.next('first')
+gen.next('second')
 
-
-const read = promisify(fs.readFile)
-const write = promisify(fs.writeFile)
-
-const writeAndRead = async (data = '') => {
-
-    try {
-        await write('test.txt', data)
-        return (await read('test.txt'))
-    } catch (e) {
-        console.error(e)
-    }
-} 
-
-writeAndRead('Something to write')
