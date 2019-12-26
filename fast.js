@@ -6,4 +6,5 @@ const promise2 = new Promise((resolve, reject) => {
     setTimeout(() => resolve('3초 뒤에 호출'), 3000)
 })
 
-Promise.all([])
+Promise.all([promise1, promise2])
+.then(values => console.log(values))
