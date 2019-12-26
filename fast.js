@@ -1,14 +1,9 @@
 'use strict'
 
-const genObj {
-    *gen() {
-        //Lazy loading
-        let cnt = 0
-        yield ++cnt
-    }
-}
+const promise1 = new Promise((resolve, reject) => resolve('즉시호출'))
 
-const gen = genObj.gen()
+const promise2 = new Promise((resolve, reject) => {
+    setTimeout(() => resolve('3초 뒤에 호출'), 3000)
+})
 
-console.log(gen.next())
-console.log(gen.next())
+Promise.all([])
