@@ -13,30 +13,11 @@ const writeAndRead = async (data = '') => {
 
     try {
         await write('test.txt', data)
-        const content = await read('test.txt')
-        return content
+        return (await read('test.txt'))
+        
     } catch (e) {
         console.error(e)
     }
 } 
 
-fs.readFile('test.txt', 'utf-8', (err, data) => {
-    if (err) {
-        console.error(err)
-        return
-    }
-
-    console.log(data)
-    
-})
-
-const content = 'Something to write'
-
-fs.writeFile('fast.txt', content, err => {
-    if(err) {
-        console.error(err)
-        return
-    }
-
-    console.log('Success')
-})
+writeAndRead('Something to write')
