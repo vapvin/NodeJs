@@ -2,8 +2,13 @@
 
 const genObj {
     *gen() {
-        yield '1'
-        yield '2'
-        yield '3'
+        //Lazy loading
+        let cnt = 0
+        yield ++cnt
     }
 }
+
+const gen = genObj.gen()
+
+console.log(gen.next())
+console.log(gen.next())
