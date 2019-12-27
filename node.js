@@ -1,22 +1,22 @@
 "use strict";
 
 class DbManager {
-  constructor(settings) {
-    this.settings = settings;
-    this.init = init;
-  }
+  constructor() {}
 
+  static async BUILD(settings) {
+    const config = await this.init(settings);
+    // 수행하고자 하는 모든 비동기 작업
+    return new DbManager(config);
+  }
   query() {
     // QUERY('') Agnostic
   }
 
-  async init() {} // 최초 1회만 실행됩니다.
+  async init(settings) {} // 최초 1회만 실행됩니다.
 
-  async newMember() {
-    await this.init;
-  }
+  async newMember() {}
 
-  async deleteMember() {
-    await this.init;
-  }
+  async deleteMember() {}
 }
+
+const manager = DbManager.BUILD(settings);
