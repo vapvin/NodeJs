@@ -1,9 +1,9 @@
 "use strict";
 
-const numbers = [0, 1, 2, 3, 4, 5, 6];
-const res = numbers.reduce((tot, amt) => {
-  if (amt > 0) tot.push(amt);
-  return tot;
-}, []);
+const arr = ["html", "pdf", "pdf", "gif", "gif", "gif"];
+const res = arr.reduce((count, type) => {
+  count[type] = (count[type] || 0) + 1;
+  return count;
+}, {});
 
 console.log(res);
