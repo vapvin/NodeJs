@@ -1,12 +1,14 @@
+"use strict";
 
-function study (value1, value2) {
-    this.value1 = value1
-    this.value2 = value2
+const numbers = [10, 20, 30, 40];
 
-    this.func = () => {
-        console.log("What")
-    }
-}
+const avg = numbers.reduce((tot, val, idx, arr) => {
+  tot += val;
+  if (idx === arr.length - 1) {
+    return tot / arr.length;
+  } else {
+    return tot;
+  }
+});
 
-const problem = new study(undefined, undefined)
-problem.func()
+console.log(avg);
