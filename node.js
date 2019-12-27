@@ -1,20 +1,4 @@
-const co = require("co");
+const arr = [Promise1, Promise2];
 
-co(
-  function*() {
-    const a = Promise.resolve(1);
-    const b = Promise.resolve(2);
-    const c = Promise.resolve(3);
-    Promise.all([a, b, c]);
-
-    const res = yield [a, b, c];
-  }.catch(err)
-);
-
-co(function*() {
-  try {
-    Promise.reject(new Error("Error "));
-  } catch (err) {
-    console.log(err);
-  }
-});
+for (const item of arr) {
+}
