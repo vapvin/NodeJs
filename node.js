@@ -1,22 +1,20 @@
-"use strict";
+const co = require("co");
 
-class DbManager {
-  constructor() {}
+co(
+  function*() {
+    const a = Promise.resolve(1);
+    const b = Promise.resolve(2);
+    const c = Promise.resolve(3);
+    Promise.all([a, b, c]);
 
-  static async BUILD(settings) {
-    const config = await this.init(settings);
-    // 수행하고자 하는 모든 비동기 작업
-    return new DbManager(config);
+    const res = yield [a, b, c];
+  }.catch(err)
+);
+
+co(function*() {
+  try {
+    Promise.reject(new Error("Error "));
+  } catch (err) {
+    console.log(err);
   }
-  query() {
-    // QUERY('') Agnostic
-  }
-
-  async init(settings) {} // 최초 1회만 실행됩니다.
-
-  async newMember() {}
-
-  async deleteMember() {}
-}
-
-const manager = DbManager.BUILD(settings);
+});
