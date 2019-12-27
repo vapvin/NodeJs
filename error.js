@@ -1,20 +1,24 @@
 'use strict'
 
-const CustomError = (message) => {
-    this.message = message
-    this.type = 'NotImageFileException'
+const CustomError = (message, type) => {
+    message: `Error: ${message}`
+    type: `API::${type}`
 }
 
-try {
-    const imgTypes = ['.jpg', '.png', '.gif']
-    const filename = 'this.doc'
+const whitelist = ['.gif', '.jpg', '.png']
 
-    const isImageFile = imgTypes.find(ext => filename.endsWith(item))
+const data = []
 
-    if(!isImageFile) {
-        throw new CustomError('This is not an image file')
-    }
+const isValidFiles = data => {
+    data.forEach(item => {
+        const ret = whitelist.find(_item => item.endsWith(_item))
 
-} catch (e) {
-    console.error(e)
+        if (ret) return true
+        return false
+    })
+} 
+
+if (!isValidFiles(['filename.pptx'])) {
+
+    throw new CustomError('isValidImageFiles', 'invalidRequest')
 }
