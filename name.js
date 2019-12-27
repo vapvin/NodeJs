@@ -1,9 +1,16 @@
 "use strict";
 
-const arr = ["html", "pdf", "pdf", "gif", "gif", "gif"];
-const res = arr.reduce((count, type) => {
-  count[type] = (count[type] || 0) + 1;
-  return count;
-}, {});
+class CacheManager {
+  constructor() {
+    if (!CacheManager.instance) {
+      this._cache = [];
+      CacheManager.instance = this;
+    }
 
-console.log(res);
+    return CacheManager.instance;
+  }
+}
+
+const instance = new CacheManager();
+
+Object.freeze(instance);
