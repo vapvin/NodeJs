@@ -1,23 +1,12 @@
-'use strict'
 
-const https = require('https')
+function study (value1, value2) {
+    this.value1 = value1
+    this.value2 = value2
 
-const options = {
-    hostname: 'google.com',
-    port: 443,
-    path:'/login',
-    method: 'GET'
+    this.func = () => {
+        console.log("What")
+    }
 }
 
-const req = https.request(options, res => {
-    console.log(`statusCode: ${res.statusCode}`)
-
-    res.on('data', d => {
-        process.stdout.write(e)
-    })
-
-    req.on('error', e => {
-        console.log(error)
-    })
-    
-})
+const problem = new study(undefined, undefined)
+problem.func()
