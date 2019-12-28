@@ -1,6 +1,6 @@
 'use strict'
 
-const expess = require('express')
+const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const http = require('http')
@@ -21,6 +21,17 @@ class ApiServer extends http.Server {
         this.app.use(helmet())
         this.app.use(cookieParser())
         this.app.use(bodyParser())
+
+        this.app.use((err, req, res, next) => {
+            console.error(`Internal error`, err)
+            if(req){
+                console.log(req)
+            }
+            if(res){
+                console.log(res)
+            }
+            next()
+        })
     }
 }
 
