@@ -1,7 +1,10 @@
 'use strict'
 
 const expess = require('express')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 const http = require('http')
+const helmet = require('helmet')
 
 class ApiServer extends http.Server {
     constructor (config) {
@@ -15,7 +18,9 @@ class ApiServer extends http.Server {
     }
 
     async start() {
-
+        this.app.use(helmet())
+        this.app.use(cookieParser())
+        this.app.use(bodyParser())
     }
 }
 
