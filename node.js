@@ -21,6 +21,11 @@ class Lock {
       return new Promise(resolve => {
         this._waiting.push(resolve)
       })
+    } else {
+      this._locked = true
+      return new Promise(resolve => {
+        resolve(unlock)
+      })
     }
   }
 }
@@ -39,11 +44,17 @@ async function increment(value, incr) {
   return value + incr
 }
 
+const account = new lock()
+
 async function add() {
   let current, newValue;
+
+  unlock = await account.lock()
   current = await getTotal()
   newValue = await increment(current, 20)
   await setTotal(newValue)  
+
+  await unlock()
 }
 
 async function main() {
