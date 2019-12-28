@@ -1,9 +1,31 @@
-const arr = [Promise1, Promise2];
+'use strict'
 
-arr.forEach(item => {
-  // 비동기 불가
-});
+let total = 0
 
-for (const item of arr) {
-  // 비동기 코드 가능
+async function getTotal() {
+  return total
+}
+
+async function setTotal(value) {
+  return value
+}
+
+async function increment(value, incr) {
+  return value + incr
+}
+
+async function add() {
+  let current, newValue;
+  current = await getTotal()
+  newValue = await increment(current, 20)
+  await setTotal(newValue)  
+}
+
+async function main() {
+  const transaction1, transaction2
+  transaction1 = add()
+  transaction2 = add()
+  await transaction1
+  await transaction2
+  console.log(await getTotal())
 }
