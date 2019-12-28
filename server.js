@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const http = require('http')
 const helmet = require('helmet')
+const static = require('serve-static')
 
 class ApiServer extends http.Server {
     constructor (config) {
@@ -15,6 +16,7 @@ class ApiServer extends http.Server {
         this.currentConns = new Set()
         this.busy = new WeakSet()
         this.stopping = false
+        this.app.static = static
     }
 
     async start() {
@@ -22,16 +24,13 @@ class ApiServer extends http.Server {
         this.app.use(cookieParser())
         this.app.use(bodyParser())
 
-        this.app.use((err, req, res, next) => {
-            console.error(`Internal error`, err)
-            if(req){
-                console.log(req)
+        this.app.use(this.app.static(path.join(__dirname, 'dist'), {
+            setHeaders: (res, path) => {
+                res.setHeaders('Access-Control-Allow-Origin', '*')
+                res.setHeaders('Access-Control-Allow-Headers', '*')
+                res.setHeaders('Access-Control-Allow-Methods', 'GET')
             }
-            if(res){
-                console.log(res)
-            }
-            next()
-        })
+        }))
     }
 }
 
