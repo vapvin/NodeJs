@@ -45,5 +45,9 @@ class ApiServer extends http.Server {
 
 const init = async (config = {}) => {
   const server = new ApiServer(config);
-  return server.start();
+  return await server.start();
+};
+
+module.exports = {
+  init
 };
