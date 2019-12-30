@@ -77,3 +77,5 @@ const init = async (config = {}) => {
 module.exports = {
   init
 };
+
+// Error Controll ...
